@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>谁是最可爱的人</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>购物车下单</h1>
+<textarea id="param" rows="10" cols="20"></textarea>
+<hr/>
+<input id="submit" type="button" value="提交"/>
+<div id="result"></div>
+</body>
+<script type="text/javascript">
+    $('#submit').click(() => {
+        let param = $('#param').val()
+        if (!param) {
+            alert('参数不能为空')
+            return
+        }
+        try {
+            JSON.parse(param)
+        } catch (e) {
+            $('#result').html('json格式不正确')
+            return
+        }
+        console.log(param)
+        $.ajax({
+            method: 'POST',
+            url: '/invoke',
+            data: param,
+            contentType: "application/json",
+            dataType: "json",
+            success: (result) => {
+                console.log('success:', result)
+                $('#result').empty()
+                $('#result').html(result)
+            },
+            error: (e) => {
+                console.log('error:', e)
+                $('#result').empty()
+                $('#result').html(e)
+            }
+        });
+    })
+</script>
+</html>
