@@ -1,6 +1,5 @@
 package com.biyao.noedge.service;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -13,18 +12,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- *
+ * 购物车下单
  * @author yangyao
  * @date 2019/3/14
  */
 @Service
-public class OrdertakingService {
-
+public class ShopcarOrderTakingService {
 
     @Autowired
     private IShopcarOrderTakingService shopcarOrderTakingService;
 
-    public Object createShopcarOrder(JSONObject jsonObject){
+    public Object createOrder(JSONObject jsonObject) {
         CreateShopcarOrderParam createShopcarOrderParam = JSON.toJavaObject(jsonObject.getJSONObject("createShopcarOrderParam"), CreateShopcarOrderParam.class);
 
         List<ShopcarItemParam> shopcarItems = JSONArray.parseArray(jsonObject.getJSONArray("shopcarItems").toJSONString(), ShopcarItemParam.class);

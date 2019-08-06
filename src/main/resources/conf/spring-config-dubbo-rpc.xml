@@ -8,7 +8,12 @@
 
 	<dubbo:reference id="IShopcarOrderTakingService" retries="0" timeout="10000" check ="false"
 					 interface="com.biyao.api.ordertaking.client.IShopcarOrderTakingService"
-					 version="${dubbo.shopcarorder.version}" group="${dubbo.shopcarorder.group}">
+					 version="${dubbo.ordertaking.version}" group="${dubbo.ordertaking.group}">
+	</dubbo:reference>
+
+	<dubbo:reference id="IGrabCashOrderTakingService" retries="0" timeout="10000" check="false"
+					 interface="com.biyao.api.ordertaking.client.IGrabCashOrderTakingService"
+					 version="${dubbo.ordertaking.version}" group="${dubbo.ordertaking.group}">
 	</dubbo:reference>
 
 </beans>
