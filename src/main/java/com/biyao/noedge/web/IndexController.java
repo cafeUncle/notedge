@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-//    @RequestMapping("/")
-//    public ModelAndView index() {
-//        System.out.println(123);
-//        return new ModelAndView("index");
-//    }
+    @RequestMapping("/")
+    public ModelAndView index() {
+        System.out.println(123);
+        return new ModelAndView("index.html");
+    }
 
 }

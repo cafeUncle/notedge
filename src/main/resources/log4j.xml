@@ -53,63 +53,6 @@
         </filter>
     </appender>
 
-    <!-- dao层Appender -->
-    <appender name="daoAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-dao.log"/>
-        <param name="Append" value="true"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
-        </layout>
-    </appender>
-
-
-    <!-- service层Appender -->
-    <appender name="serviceAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-service.log"/>
-        <param name="Append" value="true"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
-        </layout>
-    </appender>
-    
-    <!-- su消费mq -->
-    <appender name="tdcSuConsumerInfoAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-tdcSuConsumer-info.log"/>
-        <param name="Append" value="true"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
-        </layout>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="INFO"/>  
-            <param name="LevelMax" value="INFO"/>  
-        </filter>
-    </appender>
-    <appender name="tdcSuConsumerErrorAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-tdcSuConsumer-error.log"/>
-        <param name="Append" value="true"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
-        </layout>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="ERROR"/>  
-            <param name="LevelMax" value="ERROR"/>  
-        </filter>
-    </appender>
-
-    <!-- dubbo层Appender -->
-    <appender name="dubboAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-dubbo.log"/>
-        <param name="Append" value="true"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
-        </layout>
-    </appender>
-
     <!-- web层Appender -->
     <appender name="webAppender" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="File" value="/usr/local/biyaolog/tdm.biyao.com/tdm-soa-web.log"/>
@@ -129,33 +72,6 @@
             <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n"/>
         </layout>
     </appender>
-    
-    <!-- 定义dao日志输出 -->
-    <logger name="com.biyao.noedge" additivity="false">
-        <level value="error"/>
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-
-    <!-- 定义service日志输出 -->
-    <logger name="com.biyao.api.tdm.service" additivity="false">
-        <level value="error"/>
-        <appender-ref ref="serviceAppender"/>
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-    
-    <!-- 定义 su消费mq 日志输出 -->
-    <logger name="com.biyao.api.tdm.service.mq.consumer.TdcSuConsumerMessageListener" additivity="false">
-        <level value="info"/>
-        <appender-ref ref="tdcSuConsumerInfoAppender"/>
-        <appender-ref ref="tdcSuConsumerErrorAppender"/>
-    </logger>
-
-    <!-- 定义dubbo日志输出 -->
-    <logger name="com.biyao.api.tdm.rpc" additivity="false">
-        <level value="info"/>
-        <appender-ref ref="dubboAppender"/>
-        <appender-ref ref="CONSOLE"/>
-    </logger>
     
     <!-- 定义web日志输出 -->
     <logger name="com.biyao.api.tdm.web" additivity="false">
